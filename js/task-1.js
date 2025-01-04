@@ -11,3 +11,5 @@ doMath(2, 3, function add(x, y) {
 doMath(10, 8, function sub(x, y) {
   return x - y;
 });
+
+function name(params) {}
