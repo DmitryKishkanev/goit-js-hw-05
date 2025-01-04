@@ -1,15 +1,41 @@
-function doMath(a, b, callback) {
-  const result = callback(a, b);
+const filter = function (array, test) {
+  const filteredArray = [];
 
-  console.log(result);
-}
+  for (const el of array) {
+    console.log(el);
+    const passed = test(el);
 
-doMath(2, 3, function add(x, y) {
-  return x + y;
-});
+    if (passed) {
+      filteredArray.push(el);
+    }
+  }
 
-doMath(10, 8, function sub(x, y) {
-  return x - y;
-});
+  return filteredArray;
+};
 
-function name(params) {}
+const clollback1 = function (value) {
+  return value >= 3;
+};
+
+const clollback2 = function (value) {
+  return value <= 4;
+};
+
+const r1 = filter([1, 2, 3, 4, 5], clollback1);
+console.log(r1);
+
+const r2 = filter([1, 2, 3, 4, 5, 6, 7, 8], clollback2);
+console.log(r2);
+
+const fruits = [
+  { name: "aples", quantity: 200, isFresh: true },
+  { name: "grapes", quantity: 150, isFresh: false },
+  { name: "bananas", quantity: 100, isFresh: true },
+];
+
+const getFruitsWithQuantity = function (fruit) {
+  return fruit.quantity >= 120;
+};
+
+const r3 = filter(fruits, getFruitsWithQuantity);
+console.log(r3);
